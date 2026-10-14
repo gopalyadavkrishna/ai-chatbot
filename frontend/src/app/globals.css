@@ -1,0 +1,79 @@
+@import "highlight.js/styles/github-dark.css";
+@import "tailwindcss";
+
+:root {
+  --app-bg: #f7f7f8;
+  --sidebar: #ffffff;
+  --chat: #fbfbfc;
+  --surface: #ffffff;
+  --surface-elevated: #ffffff;
+  --surface-hover: #f4f4f5;
+  --text: #18181b;
+  --muted: #71717a;
+  --border: #e4e4e7;
+  --background: var(--app-bg);
+  --foreground: var(--text);
+}
+
+html.dark {
+  --app-bg: #09090b;
+  --sidebar: #111114;
+  --chat: #09090b;
+  --surface: #18181b;
+  --surface-elevated: #202024;
+  --surface-hover: #27272a;
+  --text: #fafafa;
+  --muted: #a1a1aa;
+  --border: #2a2a30;
+  --background: var(--app-bg);
+  --foreground: var(--text);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html, body { min-height: 100%; }
+body { margin: 0; background: var(--background); color: var(--foreground); font-family: Arial, Helvetica, sans-serif; }
+button, input, textarea { font: inherit; }
+* { scrollbar-color: var(--border) transparent; }
+*::-webkit-scrollbar { height: 8px; width: 8px; }
+*::-webkit-scrollbar-thumb { background: var(--border); border-radius: 999px; }
+
+/* Existing dashboard components keep the same semantics while inheriting the
+   premium workspace palette. */
+html.dark .bg-white { background-color: var(--surface); }
+html.dark .bg-slate-50 { background-color: var(--sidebar); }
+html.dark .bg-blue-50 { background-color: rgba(167, 139, 250, 0.12); }
+html.dark .bg-red-50 { background-color: rgba(248, 113, 113, 0.12); }
+html.dark .bg-blue-700 { background-color: #a78bfa; }
+html.dark .hover\:bg-blue-800:hover { background-color: #c4b5fd; }
+html.dark .text-slate-900, html.dark .text-slate-800 { color: var(--text); }
+html.dark .text-slate-700, html.dark .text-slate-600 { color: #d4d4d8; }
+html.dark .text-slate-500, html.dark .text-slate-400 { color: var(--muted); }
+html.dark .text-blue-700, html.dark .text-blue-900 { color: #c4b5fd; }
+html.dark .text-red-700 { color: #fca5a5; }
+html.dark .border-slate-200, html.dark .border-slate-300 { border-color: var(--border); }
+html.dark .ring-slate-200 { --tw-ring-color: var(--border); }
+html.dark .hover\:bg-slate-50:hover { background-color: var(--surface-hover); }
+html.dark input, html.dark textarea { background-color: var(--surface-elevated); color: var(--text); }
+
+.markdown-content > :first-child { margin-top: 0; }
+.markdown-content > :last-child { margin-bottom: 0; }
+.markdown-content p { margin: 0.7rem 0; }
+.markdown-content h1, .markdown-content h2, .markdown-content h3 { margin: 1.25rem 0 0.65rem; font-weight: 650; line-height: 1.25; }
+.markdown-content h1 { font-size: 1.45rem; }
+.markdown-content h2 { font-size: 1.2rem; }
+.markdown-content h3 { font-size: 1.05rem; }
+.markdown-content ul, .markdown-content ol { margin: 0.75rem 0; padding-left: 1.35rem; }
+.markdown-content ul { list-style: disc; }
+.markdown-content ol { list-style: decimal; }
+.markdown-content a { color: #67e8f9; text-decoration: underline; text-underline-offset: 3px; }
+.markdown-content :not(pre) > code { border: 1px solid var(--border); border-radius: 0.35rem; background: var(--surface-elevated); padding: 0.1rem 0.3rem; font-size: 0.86em; }
+.markdown-content table { display: block; max-width: 100%; overflow-x: auto; margin: 1rem 0; border-collapse: collapse; }
+.markdown-content th, .markdown-content td { border: 1px solid var(--border); padding: 0.5rem 0.65rem; text-align: left; }
+.markdown-content th { background: var(--surface-elevated); font-weight: 600; }
+.code-block pre { margin: 0; overflow-x: auto; padding: 1rem; }
+.code-block pre code.hljs { padding: 0; background: transparent; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}

@@ -1,0 +1,29 @@
+# Frontend
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/*.tsbuildinfo
+
+# Python
+backend/.venv/
+backend/__pycache__/
+backend/.pytest_cache/
+backend/**/*.py[cod]
+backend/customai_studio.db
+backend/*_runtime_check.db
+backend/uploads/
+
+# Secrets and local configuration
+backend/.env
+.env
+.env.local
+.env.*.local
+*.log
+
+# Caches and tools
+.pytest_cache/
+.qodo/
+
+# Operating system files
+.DS_Store
+Thumbs.db
