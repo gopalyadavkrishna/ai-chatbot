@@ -1,5 +1,6 @@
 """FastAPI application entry point for CustomAI Studio."""
 
+import os
 from contextlib import asynccontextmanager
 
 from fastapi import Depends, FastAPI, HTTPException, Request, status
@@ -29,14 +30,22 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
-# The Next.js development server runs on port 3000. The key never reaches it;
-# this only permits its browser requests to reach the local API.
+# Allow requests from local dev servers and Vercel deployments.
+# Can also be explicitly overridden with CORS_ORIGINS="https://example.com,https://other.com"
+cors_origins_env = os.getenv("CORS_ORIGINS", "").strip()
+cors_origins = (
+    [origin.strip() for origin in cors_origins_env.split(",") if origin.strip()]
+    if cors_origins_env
+    else ["http://localhost:3000", "http://127.0.0.1:3000"]
+)
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "http://127.0.0.1:3000"],
+    allow_origins=cors_origins,
+    allow_origin_regex=os.getenv("CORS_ORIGIN_REGEX", r"https://.*\.vercel\.app"),
     allow_credentials=False,
-    allow_methods=["GET", "POST", "PUT", "PATCH", "DELETE"],
-    allow_headers=["Content-Type", "Authorization"],
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 app.include_router(auth_router)
