@@ -257,7 +257,7 @@ export default function ConversationStudio({ chatbotId }: { chatbotId: string })
         <section className="flex min-w-0 flex-1 flex-col bg-[var(--chat)]">
           <ChatHeader chatbotName={chatbot.name} connected={isOnline} onMenu={() => setSidebarOpen(true)} onNewConversation={() => void startNewConversation()} onSettings={() => setSettingsOpen(true)} />
           <div className="min-h-0 flex-1 overflow-y-auto">
-            {hasMessages ? activeConversation.messages.map((message) => <ChatMessage chatbotName={chatbot.name} key={message.id} message={message} onCopied={() => showToast("Response copied to clipboard.")} />) : !isSending && <ChatWelcome onSelectSuggestion={selectSuggestion} />}
+            {hasMessages && activeConversation ? activeConversation.messages.map((message) => <ChatMessage chatbotName={chatbot.name} key={message.id} message={message} onCopied={() => showToast("Response copied to clipboard.")} />) : !isSending && <ChatWelcome onSelectSuggestion={selectSuggestion} />}
             {isSending && <TypingIndicator chatbotName={chatbot.name} />}
             <div ref={endOfMessagesRef} />
           </div>
